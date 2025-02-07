@@ -1,0 +1,440 @@
+@font-face {
+  font-family: "TT Lakes";
+  src: local("TT Lakes Regular"), local("TTLakes-Regular"),
+    url("../fonts/TTLakes-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TT Lakes";
+  src: local("TT Lakes Medium"), local("TTLakes-Medium"),
+    url("../fonts/TTLakes-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TT Lakes";
+  src: local("TT Lakes Bold"), local("TTLakes-Bold"),
+    url("../fonts/TTLakes-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+    Убираем внутренние отступы слева тегам списков,
+    у которых есть атрибут class
+   */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+    Убираем внешние отступы body и двум другим тегам,
+    у которых есть атрибут class
+   */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+    Убираем внешние отступы вертикали нужным тегам,
+    у которых есть атрибут class
+   */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+    Убираем стандартный маркер маркированному списку,
+    у которого есть атрибут class
+   */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+    Обнуляем вертикальные внешние отступы параграфа,
+    объявляем локальную переменную для внешнего отступа вниз,
+    чтобы избежать взаимодействие с более сложным селектором
+   */
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+    Внешний отступ вниз для параграфа без атрибута class,
+    который расположен не последним среди своих соседних элементов
+   */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+    Упрощаем работу с изображениями и видео
+   */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+    Наследуем свойства шрифт для полей ввода
+   */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+      Пригодится в большинстве ситуаций
+      (когда, например, нужно будет "прижать" футер к низу сайта)
+     */
+  height: 100%;
+  /**
+      Убираем скачок интерфейса по горизонтали
+      при появлении / исчезновении скроллбара
+     */
+  scrollbar-gutter: stable;
+}
+
+/**
+    Плавный скролл
+   */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+      Пригодится в большинстве ситуаций
+      (когда, например, нужно будет "прижать" футер к низу сайта)
+     */
+  min-height: 100%;
+  /**
+      Унифицированный интерлиньяж
+     */
+  line-height: 1.5;
+}
+
+/**
+    Нормализация высоты элемента ссылки при его инспектировании в DevTools
+   */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+    Курсор-рука при наведении на элемент
+   */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+    Приводим к единому цвету svg-элементы
+    (за исключением тех, у которых уже указан
+    атрибут fill со значением 'none' или начинается с 'url')
+   */
+:where([fill]:not([fill="none"], [fill^="url"])) {
+  fill: currentColor;
+}
+
+/**
+    Приводим к единому цвету svg-элементы
+    (за исключением тех, у которых уже указан
+    атрибут stroke со значением 'none')
+   */
+:where([stroke]:not([stroke="none"], [stroke^="url"])) {
+  stroke: currentColor;
+}
+
+/**
+    Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+   */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+    Приведение рамок таблиц в классический 'collapse' вид
+   */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+    Удаляем все анимации и переходы для людей,
+    которые предпочитают их не использовать
+   */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --max-width: 1120px;
+}
+
+* {
+  transition-duration: 0.3s;
+}
+
+body {
+  font-family: "TT Lakes";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: -0.2px;
+  background: rgb(248, 248, 248);
+}
+
+a {
+  text-decoration: none;
+  color: #7e7e82;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.aside {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  width: 320px;
+  height: 100vh;
+  padding-inline: 24px;
+  box-shadow: -2px 0px 4px 0px rgba(69, 79, 126, 0.02),
+    16px 0px 52px 0px rgba(14, 24, 80, 0.2);
+}
+
+.aside__header {
+  display: flex;
+  height: 88px;
+  align-items: center;
+  column-gap: 16px;
+  padding-block: 18px;
+}
+
+.aside__logo {
+  margin-right: auto;
+}
+
+.aside__navigation {
+  margin-bottom: 20px;
+}
+
+.aside__navigation-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.aside__link {
+  display: block;
+  font-weight: 500;
+  color: #1b1c21;
+  line-height: 24px;
+  padding-block: 10px;
+}
+
+.aside__link:hover {
+  color: #7e7e82;
+}
+
+.aside__link--current {
+  position: relative;
+  color: #7e7e82;
+}
+
+.aside__link--current::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 10%;
+  height: 70%;
+  border: 2px solid #41f6d7;
+  border-radius: 0px 3px 3px 0px;
+}
+
+.aside__contact-buttons {
+  margin-top: auto;
+}
+
+.contact-buttons-list {
+  display: flex;
+  column-gap: 16px;
+}
+
+.aside__contacts {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  margin-top: 16px;
+}
+
+.aside__email {
+  color: #1b1c21;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.aside__phone {
+  color: #1b1c21;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.6px;
+}
+
+.aside__lang {
+  display: flex;
+  column-gap: 7px;
+  margin-top: 40px;
+  margin-bottom: 32px;
+}
+
+.aside__lang input[type="radio"] {
+  display: none;
+}
+
+.aside__lang input:checked + label {
+  opacity: 0.6;
+}
+
+.aside__lang label {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.burger-button--close {
+  background: url("../icons/burger-close-icon.svg") center/50% no-repeat;
+}
+
+.search-button {
+  background: url("../icons/search-icon.svg") center/50% no-repeat;
+}
+
+.call-button {
+  background: url("../icons/icon_call.svg") center/50% no-repeat;
+}
+
+.chat-button {
+  background: url("../icons/icon_chat.svg") center/50% no-repeat;
+}
+
+.profile-button {
+  background: url("../icons/icon_profile.svg") center/50% no-repeat;
+}
+
+.logo {
+  width: 96px;
+  height: auto;
+}
+
+.button {
+  min-width: 40px;
+  width: 40px;
+  aspect-ratio: 1;
+  background-color: #ff3e79;
+  border-radius: 50%;
+  border: none;
+}
+
+.button:hover {
+  background-color: #ff3e786a;
+}
+
+/* @media (max-width: 1120px) {
+  .header {
+    position: static;
+    visibility: visible;
+  }
+
+  .main-side-buttons {
+    visibility: hidden;
+  }
+
+  .navigation__list {
+    flex-wrap: nowrap;
+  }
+
+  .navigation {
+    overflow: scroll;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-buttons-list {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  .navigation__list {
+    flex-wrap: nowrap;
+  }
+
+  .navigation {
+    overflow: scroll;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    grid-template-areas:
+      "description"
+      "button"
+      "image";
+  }
+} */

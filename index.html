@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <aside class="aside">
+      <header class="aside__header">
+        <button
+          class="button burger-button--close"
+          type="button"
+          title="burger-button"
+        ></button>
+        <a href="/" class="logo aside__logo">
+          <img src="icons/logo.svg" alt="logo" />
+        </a>
+        <button
+          class="button search-button"
+          type="button"
+          title="burger-button"
+        ></button>
+      </header>
+      <nav class="aside__navigation">
+        <ul class="aside__navigation-list">
+          <li class="aside__navigation-item">
+            <a class="aside__link aside__link--current" href=""
+              >Ремонт техники</a
+            >
+          </li>
+          <li class="aside__navigation-item">
+            <a class="aside__link" href="">Услуги и сервисы</a>
+          </li>
+          <li class="aside__navigation-item">
+            <a class="aside__link" href="">Корпоративным клиентам</a>
+          </li>
+          <li class="aside__navigation-item">
+            <a class="aside__link" href="">Продавцам техники</a>
+          </li>
+          <li class="aside__navigation-item">
+            <a class="aside__link" href="">Партнерам</a>
+          </li>
+          <li class="aside__navigation-item">
+            <a class="aside__link" href="">Производителям</a>
+          </li>
+          <li class="aside__navigation-item">
+            <a class="aside__link" href="">Наши сервисные центры</a>
+          </li>
+          <li class="aside__navigation-item">
+            <a class="aside__link" href="">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+      <ul class="aside__contact-buttons contact-buttons-list">
+        <li><button class="button call-button"></button></li>
+        <li><button class="button chat-button"></button></li>
+        <li><button class="button profile-button"></button></li>
+      </ul>
+      <div class="aside__contacts">
+        <a class="aside__email" href="mailto:mail@cps.com">mail@cps.com</a>
+        <a class="aside__phone" href="tel:88008908900">8 800 890 8900</a>
+      </div>
+      <div class="aside__lang">
+        <input type="radio" id="lang-ru" name="lang" value="ru" checked />
+        <label for="lang-ru">ru</label>
+
+        <input type="radio" id="lang-en" name="lang" value="en" />
+        <label for="lang-en">en</label>
+
+        <input type="radio" id="lang-ch" name="lang" value="ch" />
+        <label for="lang-ch">ch</label>
+      </div>
+    </aside>
+  </body>
+</html>
