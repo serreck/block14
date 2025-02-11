@@ -230,7 +230,7 @@ body {
   background: rgb(248, 248, 248);
 }
 
-a {
+.link {
   text-decoration: none;
   color: #7e7e82;
 }
@@ -308,7 +308,7 @@ a {
   border-radius: 0px 3px 3px 0px;
 }
 
-.aside__contact-buttons {
+.aside__footer {
   margin-top: auto;
 }
 
